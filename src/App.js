@@ -1,16 +1,24 @@
 
 import './App.css';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { Home } from './Components/Home';
+import { Shop } from './Components/Shop';
+import { ErrorPage } from './Components/ErrorPage';
+import { NavBar } from './Components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <nav className='top-nav'>
-        <h3>Logo</h3>
-        <ul className='nav-list'>
-          <li>Home</li>
-          <li>Shop</li>
-        </ul>
-      </nav>
+      
+      <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/home' exact element={<Home />} />
+        <Route path ='/shop' element={<Shop />} />
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
