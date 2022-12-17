@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-const NavBar = () => {
+const NavBar = ({cartNum}) => {
     return (
         <nav className='top-nav'>
             <h3>Logo</h3>
@@ -13,9 +13,10 @@ const NavBar = () => {
                 <Link to="/shop">
                 <li>Shop</li>
                 </Link>
-                <Link to="/about">
-                <li>About</li>
+                <Link to="/cart">
+                <li>Cart [{cartNum}]</li>
                 </Link>
+               
             </ul>
       </nav>
     )

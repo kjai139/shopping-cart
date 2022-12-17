@@ -6,10 +6,13 @@ import { Shop } from './Components/Shop';
 import { ErrorPage } from './Components/ErrorPage';
 import { NavBar } from './Components/NavBar';
 import { useEffect, useState } from 'react';
+import { ItemDetails } from './Components/ItemDetails';
 
 function App() {
 
   const [events, setEvents] = useState([])
+
+  const [cartNum, setCartNum] = useState(0)
 
   useEffect( () => {
       const fetchData = async () => {
@@ -31,12 +34,13 @@ function App() {
     <div className="App">
       
       <BrowserRouter>
-      <NavBar />
+      <NavBar cartNum = {cartNum} />
       <Routes>
         <Route path='/' element={<Home events={events}/>} />
         <Route path='/home' exact element={<Home events={events} />} />
-        <Route path ='/shop' element={<Shop />} />
+        <Route path ='/shop' element={<Shop cartNum = {cartNum} />} />
         <Route path='*' element={<ErrorPage />} />
+        <Route path='/shop/:id' element={<ItemDetails />} />
       </Routes>
       </BrowserRouter>
     </div>

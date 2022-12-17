@@ -22,14 +22,7 @@ const Home = ({events}) => {
     }
 
 
-    const filler = () => {
-        <div key={events[0] ? events[0].uuid : ""} style={{
-            backgroundImage: `${events[0] ? `url(${events[0].displayIcon})` : ''}`
-        }} className="eventCards">
-            <p>${events[0] ? events[0].description : "Loading..."}</p>
-            
-        </div>
-    }
+    
 
     
 
