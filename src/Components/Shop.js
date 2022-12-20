@@ -24,7 +24,7 @@ const Shop = ({cartNum}) => {
    
 
     const renderShop = () => {
-        return wepData.map((value, key) =>
+        return wepData.map(value =>
         <Link key={value.uuid} to={`/shop/${value.uuid}`}>
         <div className="itemsDiv" key={`div${value.uuid}`}>
             

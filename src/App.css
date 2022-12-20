@@ -89,3 +89,33 @@ html, body, #root {
   background-repeat: no-repeat;
   
 }
+
+
+.itemDetailsDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.itemDetailImgDiv {
+  
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.itemDetailGrid {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.itemDetailGrid > div:nth-child(1) {
+  grid-row: 1/4;
+}
+
+.itemDetailList {
+  list-style-type: none;
+}
