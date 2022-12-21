@@ -7,12 +7,16 @@ import { ErrorPage } from './Components/ErrorPage';
 import { NavBar } from './Components/NavBar';
 import { useEffect, useState } from 'react';
 import { ItemDetails } from './Components/ItemDetails';
+import { Cart } from './Components/Cart';
 
 function App() {
 
   const [events, setEvents] = useState([])
 
   const [cartNum, setCartNum] = useState(0)
+
+  const [cartItems , setCartItems] = useState([])
+    
 
   useEffect( () => {
       const fetchData = async () => {
@@ -42,7 +46,8 @@ function App() {
         <Route path='/home' exact element={<Home events={events} />} />
         <Route path ='/shop' element={<Shop cartNum = {cartNum} />} />
         <Route path='*' element={<ErrorPage />} />
-        <Route path='/shop/:id' element={<ItemDetails />} />
+        <Route path='/shop/:id' element={<ItemDetails cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems}/>} />
+        <Route path='/cart' element={<Cart cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems} />} />
       </Routes>
       </BrowserRouter>
     </div>

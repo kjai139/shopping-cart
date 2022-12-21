@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 
 
 
-const ItemDetails = () => {
+const ItemDetails = ({cartNum, setCartNum, cartItems, setCartItems }) => {
 
     const [wepData, setWepData] = useState([])
     const params = useParams()
@@ -34,6 +34,19 @@ const ItemDetails = () => {
         
     }, [])
 
+    const addToCart = () => {
+        setCartNum(cartNum + 1)
+        setCartItems( (prevState) => {
+            return [
+                ...prevState,
+                wepData
+            ]
+               
+        })
+
+        console.log(cartItems)
+    }
+
 
     const renderDetails = () => {
         return (
@@ -48,15 +61,20 @@ const ItemDetails = () => {
                 {wepData.displayName ? wepData.displayName : 'Loading...'}
                 </li>
                 <li>
-                    Type:{wepData.shopData ? wepData.shopData.categoryText : 'Loading...'}
+                    <b>Type:</b> {wepData.shopData ? wepData.shopData.categoryText : 'Loading...'}
                 </li>
                 <li>
-                    Cost:${wepData.shopData ? wepData.shopData.cost : 'Loading...'}
+                    <b>Fire rate:</b> {wepData.weaponStats ? wepData.weaponStats.fireRate : 'Loading...'}
                 </li>
                 <li>
-
+                    <b>Magazine size:</b> {wepData.weaponStats ? wepData.weaponStats.magazineSize : 'Loading...'}
                 </li>
+                <li>
+                    <b>Cost:</b> ${wepData.shopData ? wepData.shopData.cost : 'Loading...'}
+                </li>
+                
             </ul>
+            <button onClick={addToCart}>Add to cart</button>
             </div>
            
 

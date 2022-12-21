@@ -1,5 +1,8 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Roboto:wght@400;700&display=swap');
 
+:root {
+  --bodyFont: 'Lexend', sans-serif;
+  --uiFont: 'Roboto', sans-serif;
 }
 
 .App {
@@ -24,7 +27,22 @@ html, body, #root {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
+  
   background: linear-gradient(to right, #944040, #d4668b);
+}
+
+.top-nav > h3, .nav-list > a {
+  font-family: var(--bodyFont);
+  font-weight: bold;
+}
+
+.nav-list > a:visited, .nav-list > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-list > a:active {
+  color:rgb(197, 62, 80);
 }
 
 .nav-list {
@@ -32,6 +50,27 @@ html, body, #root {
   justify-content: space-around;
   list-style-type: none;
   gap: 10px;
+}
+
+.shopGrid > a:visited, .shopGrid > a {
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--bodyFont)
+}
+
+.itemDetailList > li {
+  font-family: var(--bodyFont);
+  
+  
+}
+
+
+.itemDetailList > :nth-child(1) {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  
 }
 
 .eventGrid {
@@ -96,26 +135,62 @@ html, body, #root {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   
 }
 
-.itemDetailImgDiv {
+.itemDetailImgDiv, .detailsRight {
   
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
+.detailsRight {
+  
+  min-width: 20%;
+  min-height: 50px;
+}
+
+.cartDetailDiv {
+  display:flex;
+  padding: 5px;
+  justify-content: space-around;
+}
+
+.detailsLeft > p {
+  font-size: 16px;
+  
+}
+
 .itemDetailGrid {
   display:grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
+  width: 40%;
+  height: 100%;
 }
 
+
 .itemDetailGrid > div:nth-child(1) {
-  grid-row: 1/4;
+  grid-row: 2/4;
+}
+
+.itemDetailGrid > div:nth-child(2) {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  grid-row: 4/5;
+  flex-direction: column;
 }
 
 .itemDetailList {
   list-style-type: none;
+}
+
+.totalDiv {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20%;
 }
