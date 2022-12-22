@@ -25,7 +25,7 @@ const Shop = ({cartNum}) => {
 
     const renderShop = () => {
         return wepData.map(value =>
-        <Link key={value.uuid} to={`/shop/${value.uuid}`}>
+        <Link key={value.uuid} to={`/shopping-cart/shop/${value.uuid}`}>
         <div className="itemsDiv" key={`div${value.uuid}`}>
             
         <div className="itemsImg" key={`items${value.uuid}`} style={{
