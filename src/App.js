@@ -42,12 +42,12 @@ function App() {
       <BrowserRouter>
       <NavBar cartNum = {cartNum} />
       <Routes>
-        <Route path='/' element={<Home events={events}/>} />
-        <Route path='/home' exact element={<Home events={events} />} />
-        <Route path ='/shop' element={<Shop cartNum = {cartNum} />} />
+        <Route path='/shopping-cart' exact element={<Home events={events}/>} />
+        <Route path='/shopping-cart/home' exact element={<Home events={events} />} />
+        <Route path ='/shopping-cart/shop' element={<Shop cartNum = {cartNum} />} />
         <Route path='*' element={<ErrorPage />} />
-        <Route path='/shop/:id' element={<ItemDetails cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems}/>} />
-        <Route path='/cart' element={<Cart cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems} />} />
+        <Route path='/shopping-cart/shop/:id' element={<ItemDetails cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems}/>} />
+        <Route path='/shopping-cart/cart' element={<Cart cartNum = {cartNum} setCartNum = {setCartNum} cartItems = {cartItems} setCartItems = {setCartItems} />} />
       </Routes>
       </BrowserRouter>
     </div>

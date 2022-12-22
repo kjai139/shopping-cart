@@ -10,6 +10,37 @@ const ItemDetails = ({cartNum, setCartNum, cartItems, setCartItems }) => {
     const params = useParams()
     const uuid = params.id
 
+    const minQty = 1
+    const maxQty = 3
+
+
+    const [quantity, setQuantity] = useState(1)
+
+    const handleQtyChange = (e) => {
+        let {min, max, value} = e.target
+        let qtyValue = Math.max(Number(min), Math.min(Number(max), Number(value)))
+        setQuantity(qtyValue)
+        console.log(qtyValue, quantity)
+    }
+
+    const handleFocus = (e) => {
+        e.target.select()
+    }
+
+    const addQty = () => {
+        if (quantity < maxQty) {
+            setQuantity(quantity + 1)
+        }
+        
+    }
+
+    const removeQty = () => {
+        if (quantity > minQty) {
+            setQuantity(quantity - 1)
+        }
+        
+    }
+
     
 
     useEffect( () => {
@@ -35,14 +66,18 @@ const ItemDetails = ({cartNum, setCartNum, cartItems, setCartItems }) => {
     }, [])
 
     const addToCart = () => {
-        setCartNum(cartNum + 1)
-        setCartItems( (prevState) => {
-            return [
-                ...prevState,
-                wepData
-            ]
-               
-        })
+        setCartNum(cartNum + quantity)
+        for (let i = quantity; i > 0; i--) {
+            setCartItems( (prevState) => {
+                return [
+                    ...prevState,
+                    wepData
+                ]
+                   
+            })
+
+        }
+        
 
         console.log(cartItems)
     }
@@ -70,11 +105,16 @@ const ItemDetails = ({cartNum, setCartNum, cartItems, setCartItems }) => {
                     <b>Magazine size:</b> {wepData.weaponStats ? wepData.weaponStats.magazineSize : 'Loading...'}
                 </li>
                 <li>
-                    <b>Cost:</b> ${wepData.shopData ? wepData.shopData.cost : 'Loading...'}
+                    <b>Cost:</b> ${wepData.shopData ? wepData.shopData.cost : 0}
                 </li>
                 
             </ul>
-            <button onClick={addToCart}>Add to cart</button>
+            <div className="qtyBtnDiv">
+                <button className="qMinusBtn" onClick={removeQty}>-</button>
+                <input className="qtyInput" type="number" onChange={handleQtyChange} onFocus={handleFocus} min={minQty} max={maxQty} value={quantity}></input>
+                <button className="qPlusBtn" onClick={addQty}>+</button>
+            </div>
+            <button className="addCartBtn" onClick={addToCart}>Add to cart</button>
             </div>
            
 
